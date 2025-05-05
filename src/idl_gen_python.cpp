@@ -2657,6 +2657,9 @@ class PythonGenerator : public BaseGenerator {
     if (needs_imports) {
       const std::string local_import = "." + mod;
 
+      if (parser_.opts.one_file && parser_.opts.python_typing) {
+        code += "from __future__ import annotations\n";
+      }
       code += "import flatbuffers\n";
       if (parser_.opts.python_gen_numpy) {
         code += "from flatbuffers.compat import import_numpy\n";
