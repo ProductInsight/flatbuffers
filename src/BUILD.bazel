@@ -48,6 +48,9 @@ cc_library(
     hdrs = [
         "//:public_headers",
     ],
+    copts = [
+        "-Wno-stringop-overflow",
+    ],
     linkopts = select({
         # TODO: Bazel uses `clang` instead of `clang++` to link
         # C++ code on BSD. Temporarily adding these linker flags while
